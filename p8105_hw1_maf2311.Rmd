@@ -1,0 +1,44 @@
+---
+title: "p8105_hw1_maf2311"
+output: github_document
+---
+
+```{r setup, include = FALSE}
+library(tidyverse)
+```
+
+# Problem 1
+
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+Penguins Dataset Description: 
+
+* The Penguins dataset has the following variables: `r names(penguins)`. This data is from the year `r min(pull(penguins, year))` to `r max(pull(penguins, year))`, and includes the following species of penguins: `r unique(pull(penguins, species))`.
+* The Penguins dataset has `r nrow(penguins)` rows and `r ncol(penguins)` columns.
+* The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)` millimeters.
+
+```{r, echo = FALSE}
+plot_penguins =
+  tibble(
+    bill_length_mm_x = pull(penguins, bill_length_mm),
+    flipper_length_mm_y = pull(penguins, flipper_length_mm)
+  )
+ggplot(plot_penguins, aes(x=bill_length_mm_x, y=flipper_length_mm_y, color = pull(penguins, species))) + geom_point()
+
+ggsave("penguins_scatter_plot.pdf", height = 4, width = 6)
+```
+
+# Problem 2
+
+
+
+
+
+
+
+
+
+
+
