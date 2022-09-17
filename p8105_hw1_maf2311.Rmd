@@ -32,10 +32,37 @@ ggsave("penguins_scatter_plot.pdf", height = 4, width = 6)
 
 # Problem 2
 
+This is my dataframe: 
 
+```{r dataframe, echo = FALSE}
+hw1_prob2_df = tibble(
+  rand_samp = rnorm(10),
+  vec_logical = rand_samp > 0,
+  vec_char = c(sample(LETTERS, 10, replace=FALSE)),
+  vec_factor = factor(c("a","b","c","a","b","c","a","b","c","a"))
+)
+hw1_prob2_df
+```
 
+I am able to take the mean of the rand_samp variable because it is an integer, and I am able to 
+take the mean of the logical variable because it is binary, and are considered 0 = False, and 
+1 = True. I cannot take the mean of a character variable or a factor variable.
 
+```{r means, include = FALSE}
+mean(pull(hw1_prob2_df, rand_samp))
+mean(pull(hw1_prob2_df, vec_logical))
+mean(pull(hw1_prob2_df, vec_char))
+mean(pull(hw1_prob2_df, vec_factor))
+```
 
+```{r convert_types, eval = FALSE}
+as.numeric(pull(hw1_prob2_df, vec_logical))
+as.numeric(pull(hw1_prob2_df,vec_char))
+as.numeric(pull(hw1_prob2_df,vec_factor))
+```
+
+When I apply the as.numeric function, the logical, character, and factor variables get assigned an
+integer, and then the mean can be calculated. 
 
 
 
